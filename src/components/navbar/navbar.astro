@@ -3,6 +3,7 @@
 import Container from "@/components/container.astro";
 import Search from "./search.astro";
 import Logo from "./logo.astro";
+import Footer from "@/components/footer.astro";
 ---
 
 <Container>
@@ -31,6 +32,9 @@ import Logo from "./logo.astro";
       <li><a href="/blog" onclick="closeMenu()">Blog</a></li>
       <li><a href="/legal" onclick="closeMenu()">Legal</a></li>
     </ul>
+    <footer>
+      <Footer />
+    </footer>
   </div>
 
   <style>
@@ -402,6 +406,16 @@ import Logo from "./logo.astro";
       text-decoration: underline 2px
         color-mix(in srgb, var(--md-sys-color-on-background) 50%, transparent);
       text-underline-offset: 4px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   </style>
 
