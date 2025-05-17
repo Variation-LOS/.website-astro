@@ -3,7 +3,7 @@
   pagefind.init();
 </script>
 
-<a class="search-icon" id="search-icon">/search</a>
+<a class="search-icon" id="search-icon">Search</a>
 
 <div class="search-box" id="search-box">
   <div id="search-backdrop" class="search-backdrop"></div>
@@ -13,13 +13,13 @@
         id="search-input"
         class="search-input"
         type="text"
-        placeholder="搜索文档"
+        placeholder="Search Device or Blogs"
       />
     </div>
 
     <div id="results" class="search-results">
       <div class="search-placeholder">
-        <div>🤔🔍</div>
+        <div>Search Device or Blogs</div>
       </div>
     </div>
   </div>
@@ -27,14 +27,40 @@
 
 <style>
   .search-icon {
-    font-weight: bold;
+    font-weight: 400;
     color: inherit;
     cursor: pointer;
-    transition: color 200ms;
+    transition: all 0.25s ease-in-out;
+    color: color-mix(
+      in srgb,
+      var(--md-sys-color-on-background) 50%,
+      transparent
+    );
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .search-icon::before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    mask-image: url("../../assets/search.svg");
+    mask-size: 18px 18px;
+    mask-repeat: no-repeat;
+    opacity: 0.5;
+    transition: all 0.25s ease-in-out;
+    background-color: var(--md-sys-color-on-background);
   }
 
   .search-icon:hover {
-    color: #3b82f6;
+    color: var(--md-sys-color-on-background);
+  }
+
+  .search-icon:hover::before {
+    opacity: 1;
   }
 
   .search-box {
