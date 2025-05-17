@@ -3,10 +3,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "strictNullChecks": true,
-    "types": ["astro/client"],
-    "paths": {
-      "@/*": ["src/*"],
-      "~/*": ["*"]
-    }
+    "types": ["astro/client"]
   }
 }
