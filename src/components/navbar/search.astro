@@ -1,0 +1,146 @@
+<script type="module">
+  const pagefind = await import("/pagefind/pagefind.js");
+  pagefind.init();
+</script>
+
+<a class="search-icon" id="search-icon">/search</a>
+
+<div class="search-box" id="search-box">
+  <div id="search-backdrop" class="search-backdrop"></div>
+  <div class="search-container">
+    <div class="search-input-container">
+      <input
+        id="search-input"
+        class="search-input"
+        type="text"
+        placeholder="搜索文档"
+      />
+    </div>
+
+    <div id="results" class="search-results">
+      <div class="search-placeholder">
+        <div>🤔🔍</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .search-icon {
+    font-weight: bold;
+    color: inherit;
+    cursor: pointer;
+    transition: color 200ms;
+  }
+
+  .search-icon:hover {
+    color: #3b82f6;
+  }
+
+  .search-box {
+    display: none;
+  }
+
+  .search-backdrop {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    backdrop-filter: blur(32px);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(24, 24, 27, 0.2);
+  }
+
+  .dark .search-backdrop {
+    background-color: rgba(113, 113, 122, 0.2);
+  }
+
+  .search-container {
+    position: fixed;
+    left: 50%;
+    top: 8rem;
+    transform: translateX(-50%);
+    z-index: 1001;
+    width: 560px;
+    background-color: #e4e4e7;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .dark .search-container {
+    background-color: #09090b;
+  }
+
+  .search-input-container {
+    padding: 1rem;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid #3b82f6;
+    border-radius: 0.5rem;
+    outline: none;
+  }
+
+  .search-input:focus {
+    box-shadow: none;
+    border-color: #3b82f6;
+  }
+
+  .dark .search-input {
+    background-color: #020617;
+  }
+
+  .search-results {
+    min-height: 13rem;
+    max-height: 24rem;
+    padding: 1rem;
+    padding-top: 0;
+    overflow: auto;
+  }
+
+  .search-results > * + * {
+    margin-top: 0.5rem;
+  }
+
+  .search-placeholder {
+    width: 100%;
+    min-height: 12rem;
+    font-size: 3rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  }
+</style>
+
+<script type="module">
+  const searchInput = document.querySelector("#search-input");
+  searchInput.addEventListener("input", handleSearch);
+  async function handleSearch(e) {
+    const { value } = e.target;
+    let html = "";
+    const search = await pagefind.search(value);
+    const results = search.results.map((item) => item.data());
+    const data = await Promise.all(results);
+    data.map(({ meta: { title }, url, excerpt }) => {
+      html += `
+      <div class="bg-white dark:bg-zinc-800 p-2 rounded-lg shadow-xl">
+        <a href="${url}" class="text-blue-500 hover:text-blue-600 transition-colors duration-200">${title}</a>
+        <p class="text-gray-500 text-sm line-clamp-1 text-ellipsis mt-1 ml-4">${excerpt.replaceAll("<mark", '<mark class="bg-blue-500 text-white"')}</p>
+      </div>
+    `;
+    });
+    resultEl.innerHTML = html;
+  }
+</script>
