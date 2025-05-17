@@ -1,0 +1,23 @@
+---
+import Container from "@/components/container.astro";
+import Layout from "@/layouts/Layout.astro";
+import GlobalStyles from "@/components/GlobalStyles.astro";
+import * as greatPost from "./markdowns/legal.md";
+// Import statement
+import { Content } from "./markdowns/legal.md";
+// Collections query
+import { getEntry, render } from "astro:content";
+
+// const product = await getEntry("products", "shirt");
+// const { Content } = await render(product);
+---
+
+<Layout title="">
+  <GlobalStyles />
+  <Container>
+    <h1>{greatPost.frontmatter.title}</p>
+    <h3>{greatPost.frontmatter.author}</p>
+    <p>{greatPost.frontmatter.date}</p>
+    <Content />
+  </Container>
+</Layout>

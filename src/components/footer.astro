@@ -1,0 +1,60 @@
+---
+import svgLogo from "@/assets/favicon.svg";
+---
+
+<footer class="footer-container">
+  <p class="copyright-text">
+    Copyright {new Date().getFullYear()}
+    <img src={svgLogo.src} height="14" /> Variation UI. All rights reserved.
+  </p>
+  <p class="author-credit">
+    Made by <a
+      href="https://web3templates.com"
+      target="_blank"
+      rel="noopener"
+      class="footer-link">
+      AurysianYan</a>, Based on <a
+      href="https://web3templates.com"
+      target="_blank"
+      rel="noopener"
+      class="footer-link">
+      Astro</a>
+  </p>
+
+  <style>
+    .footer-container {
+      margin: 16px 0;
+    }
+
+    .copyright-text[data-astro-cid-k2f5zb5c] {
+      text-align: center;
+      font-size: 14px;
+      line-height: 16px;
+      color: var(--md-sys-color-on-background);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: center;
+      opacity: 0.75;
+    }
+
+    .author-credit {
+      text-align: center;
+      font-size: 12px;
+      line-height: 14px;
+      color: var(--md-sys-color-on-secondary-fixed-variant);
+
+      margin-top: 8px;
+    }
+
+    .footer-link {
+      text-decoration: underline transparent;
+      transition: all 0.3s ease;
+      color: var(--md-sys-color-on-secondary-fixed-variant);
+    }
+
+    .footer-link:hover {
+      text-decoration: underline var(--md-sys-color-on-secondary-fixed-variant);
+    }
+  </style>
+</footer>
