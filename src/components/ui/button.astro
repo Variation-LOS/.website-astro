@@ -14,27 +14,65 @@ const {
   class: className,
   ...rest
 } = Astro.props;
-
-const sizes = {
-  md: "px-5 py-2.5",
-  lg: "px-6 py-3",
-};
-
-const styles = {
-  outline: "border-2 border-black hover:bg-black text-black hover:text-white",
-  primary:
-    "bg-black text-white hover:bg-slate-900  border-2 border-transparent",
-};
 ---
+
+<style>
+  .button {
+    border-radius: 48px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.3, 0, 0.8, 0.15);
+    outline: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .button:hover {
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.05, 0.7, 0.1, 1);
+  }
+
+  .button:focus-visible {
+    box-shadow: 0 0 0 2px rgba(229, 231, 235, 1);
+  }
+
+  .button.block {
+    width: 100%;
+  }
+
+  .button.size-md {
+    padding: 10px 20px;
+  }
+
+  .button.size-lg {
+    padding: 12px 24px;
+  }
+
+  .button.style-outline {
+    border: 2px solid var(--md-sys-color-on-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    background: transparent;
+  }
+
+  .button.style-primary {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    border: none;
+  }
+</style>
 
 <button
   {...rest}
-  class:list={[
-    "rounded-sm text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200",
-    block && "w-full",
-    sizes[size],
-    styles[style],
+  class={[
+    "button",
+    `size-${size}`,
+    `style-${style}`,
+    block && "block",
     className,
-  ]}
+  ]
+    .filter(Boolean)
+    .join(" ")}
   ><slot />
 </button>
