@@ -35,7 +35,9 @@ import MarkdownStyles from "./markdowns/markdown-style.astro";
       </h3>
     </div>
     <main>
-      <Content />
+      <div class="content">
+        <Content />
+      </div>
     </main>
   </Container>
 </Layout>
@@ -56,6 +58,9 @@ import MarkdownStyles from "./markdowns/markdown-style.astro";
     margin: 0;
     letter-spacing: var(--title-font-letterspace) !important;
     border: none;
+    padding: 0 14px;
+    padding-top: 0;
+    text-align: center;
   }
 
   .Title h3 {
@@ -97,6 +102,19 @@ import MarkdownStyles from "./markdowns/markdown-style.astro";
     font-size: 16px;
     line-height: 1.5;
     color: var(--md-sys-color-on-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    main {
+      padding: 14px;
+    }
+  }
+
+  .content {
+    max-width: 1200px;
   }
 </style>
 
