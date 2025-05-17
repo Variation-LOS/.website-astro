@@ -1,7 +1,6 @@
 ---
 import Container from "@/components/container.astro";
 import Layout from "@/layouts/Layout.astro";
-import GlobalStyles from "@/components/GlobalStyles.astro";
 import * as greatPost from "./markdowns/legal.md";
 // Import statement
 import { Content } from "./markdowns/legal.md";
@@ -12,11 +11,10 @@ import { getEntry, render } from "astro:content";
 // const { Content } = await render(product);
 ---
 
-<Layout title="">
-  <GlobalStyles />
+<Layout title="Legal">
   <Container>
-    <h1>{greatPost.frontmatter.title}</p>
-    <h3>{greatPost.frontmatter.author}</p>
+    <h1>{greatPost.frontmatter.title}</h1>
+    <h3>{greatPost.frontmatter.author}</h3>
     <p>{greatPost.frontmatter.date}</p>
     <Content />
   </Container>

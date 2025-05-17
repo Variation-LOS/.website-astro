@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
-import GlobalStyles from "@/components/GlobalStyles.astro";
 import Sectionhead from "@/components/sectionhead.astro";
 
 // Filter blog entries with 'draft: false' & date before current date
@@ -18,7 +17,6 @@ publishedBlogEntries.sort(function (a, b) {
 ---
 
 <Layout title="Blog">
-  <GlobalStyles />
   <Container>
     <Sectionhead>
       <Fragment slot="title">Our Blog</Fragment>

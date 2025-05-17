@@ -1,7 +1,9 @@
 ---
 const { class: className } = Astro.props;
+import GlobalStyles from "@/components/GlobalStyles.astro";
 ---
 
+<GlobalStyles />
 <div class:list={[className]}>
   <slot />
 </div>
