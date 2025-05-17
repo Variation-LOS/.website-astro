@@ -77,9 +77,9 @@ import Logo from "./logo.astro";
         }
       });
 
-    //   // 全局注册方法（保留，用于菜单项的onclick）
-    //   window.toggleMenu = toggleMenu;
-    //   window.closeMenu = closeMenu;
+      //   // 全局注册方法（保留，用于菜单项的onclick）
+      //   window.toggleMenu = toggleMenu;
+      //   window.closeMenu = closeMenu;
     });
   </script>
 
@@ -250,6 +250,17 @@ import Logo from "./logo.astro";
     opacity: 1;
   }
 
+  @media (max-width: 640px) {
+    .menu-closed,
+    .menu-container {
+      padding: 28px;
+    }
+
+    .menu-open[data-astro-cid-57m2wulp] {
+      padding: 36px;
+    }
+  }
+
   body:has(.menu-open) {
     overflow: hidden;
   }
@@ -308,17 +319,30 @@ import Logo from "./logo.astro";
     opacity: 1;
   }
 
+  .menu-container ul li:nth-child(1) {
+    transition-delay: 0.225s;
+  }
+  .menu-container ul li:nth-child(2) {
+    transition-delay: 0.15s;
+  }
+  .menu-container ul li:nth-child(3) {
+    transition-delay: 0.075s;
+  }
+  .menu-container ul li:nth-child(4) {
+    transition-delay: 0s;
+  }
+
   .menu-open ul li:nth-child(1) {
     transition-delay: 0s;
   }
   .menu-open ul li:nth-child(2) {
-    transition-delay: 0.1s;
+    transition-delay: 0.075s;
   }
   .menu-open ul li:nth-child(3) {
-    transition-delay: 0.2s;
+    transition-delay: 0.15s;
   }
   .menu-open ul li:nth-child(4) {
-    transition-delay: 0.3s;
+    transition-delay: 0.225s;
   }
 
   .menu-container ul li a {
@@ -332,18 +356,5 @@ import Logo from "./logo.astro";
     text-decoration: underline 2px
       color-mix(in srgb, var(--md-sys-color-on-background) 50%, transparent);
     text-underline-offset: 4px;
-  }
-
-  .auth-buttons {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-  }
-
-  .menu-button svg {
-    width: 1.5rem;
-    height: 1.5rem;
   }
 </style>
