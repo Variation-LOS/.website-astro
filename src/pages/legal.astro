@@ -4,18 +4,109 @@ import Layout from "@/layouts/Layout.astro";
 import * as greatPost from "./markdowns/legal.md";
 // Import statement
 import { Content } from "./markdowns/legal.md";
-// Collections query
-import { getEntry, render } from "astro:content";
+import MarkdownStyles from "./markdowns/markdown-style.astro";
 
-// const product = await getEntry("products", "shirt");
-// const { Content } = await render(product);
+// import { remark } from "remark";
+// import remarkToc from "remark-toc";
+// import dayjs from "dayjs";
+// import utc from "dayjs/plugin/utc";
+
+// dayjs.extend(utc);
+
+// const lastModified = dayjs()
+//   .utc(Astro.props.frontmatter.lastModified)
+//   .format("HH:mm:ss DD MMMM YYYY UTC");
+
+// const file = await remark()
+//   .use(remarkToc)
+// //   .process(await read(Content));
+
+// console.error(String(file));
 ---
 
 <Layout title="Legal">
+  <MarkdownStyles />
   <Container>
-    <h1>{greatPost.frontmatter.title}</h1>
-    <h3>{greatPost.frontmatter.author}</h3>
-    <p>{greatPost.frontmatter.date}</p>
-    <Content />
+    <div class="Title">
+      <h1>{greatPost.frontmatter.title}</h1>
+      <h3>
+        {greatPost.frontmatter.author}
+        <!-- <p>{lastModified}</p> -->
+      </h3>
+    </div>
+    <main>
+      <Content />
+    </main>
   </Container>
 </Layout>
+
+<style>
+  .Title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0;
+  }
+
+  .Title h1 {
+    font-size: 48px;
+    line-height: 1;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: var(--title-font-letterspace) !important;
+    border: none;
+  }
+
+  .Title h3 {
+    margin: 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    font-weight: 400;
+    opacity: 0.75;
+  }
+
+  .Title p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--md-sys-color-on-background);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .Title p::before {
+    content: "";
+    margin: 0;
+    height: 18px;
+    width: 2px;
+    display: block;
+    background-color: var(--md-sys-color-on-background);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+
+  main {
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--md-sys-color-on-background);
+  }
+</style>
+
+<!-- <script type="module">
+//   import { remark } from "remark";
+//   import remarkToc from "remark-toc";
+
+//   const file = await remark()
+//     .use(remarkToc)
+//     .process(await read(Content));
+
+//   console.error(String(file));
+</script> -->

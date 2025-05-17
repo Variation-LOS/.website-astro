@@ -4,6 +4,11 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import mkcert from 'vite-plugin-mkcert';
+import remarkToc from 'remark-toc';
+import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { remarkModifiedTime } from './src/remark-modified-time.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,5 +34,7 @@ export default defineConfig({
             // 启用自动换行以防止水平滚动
             wrap: true
         },
+        remarkPlugins: [[remarkToc, { heading: 'contents', maxDepth: 3 }], remarkModifiedTime],
+        rehypePlugins: [rehypeAccessibleEmojis, rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]],
     },
 });
