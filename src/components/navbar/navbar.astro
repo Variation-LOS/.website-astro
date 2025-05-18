@@ -307,6 +307,13 @@ import Footer from "src/components/footer.astro";
       span.menu-hr {
         display: none;
       }
+
+      .menu-container ul li {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0px;
+        margin-left: 0;
+      }
     }
 
     body:has(.menu-open) {
@@ -337,9 +344,21 @@ import Footer from "src/components/footer.astro";
       width: 100%;
       max-width: 370px;
       display: flex;
-      flex-direction: row;
       align-items: center;
-      justify-content: space-between;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-left: -28px;
+    }
+
+    .menu-container ul li:hover {
+      transition-delay: 0s !important;
+    }
+
+    @media (min-width: 640px) {
+      .menu-container ul li:hover {
+        margin-left: -12px;
+      }
     }
 
     .menu-container ul li::after {
