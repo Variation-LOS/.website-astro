@@ -86,6 +86,10 @@
     opacity: 1;
   }
 
+  #search-box.search-container {
+    max-width: 370px;
+  }
+
   #search-box.show .search-container * {
     filter: blur(18px);
     transition: all 0.4s cubic-bezier(0.3, 0, 0.8, 0.15);
@@ -302,6 +306,12 @@
   .search-result-mark {
     background-color: #3b82f6;
     color: white;
+  }
+
+  input:is(:-webkit-autofill, :autofill) {
+    margin-left: -8px;
+    padding: 0 8px;
+    border-radius: 10px;
   }
 </style>
 
