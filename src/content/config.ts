@@ -13,8 +13,6 @@ const blogCollection = defineCollection({
     }),
     publishDate: z.string().transform(str => new Date(str)),
     author: z.string().default('Astroship'),
-    category: z.string(),
-    tags: z.array(z.string()),
   }),
 });
 
@@ -23,6 +21,12 @@ const teamCollection = defineCollection({
     draft: z.boolean(),
     name: z.string(),
     title: z.string(),
+    category: z.string(),
+    devices: z.array(z.string()).optional(),
+    tags: z.array(z.string()).optional(),
+    social: z.object({
+      github: z.string(),
+    }),
     avatar: z.object({
       src: z.string(),
       alt: z.string(),

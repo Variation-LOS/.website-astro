@@ -1,0 +1,103 @@
+---
+import Container from "src/components/container.astro";
+import Layout from "src/layouts/Layout.astro";
+---
+
+<Layout title="Contact">
+  <Container>
+    <aside>
+      <div class="title">
+        <h1>Get Started</h1>
+        <p>Choose your device or check the install guide.</p>
+      </div>
+      <div class="cards">
+        <div class="card varVersion">
+          <img src="src/assets/varlogo.svg" height="20" />
+          <h2>All Release</h2>
+          <p>
+            Variation Version<img
+              src="src/assets/arrow_forward_bold.svg"
+              height="16"
+            />
+          </p>
+        </div>
+
+        <div class="card">
+          <img src="src/assets/varlogo.svg" height="20" />
+          <h2>All Release</h2>
+          <p>
+            Android Version<img
+              src="src/assets/arrow_forward_bold.svg"
+              height="16"
+            />
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <style>
+      .cards {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        background-color: var(--md-sys-color-surface-container-lowest);
+        border-radius: 20px;
+        margin: 6px;
+        width: calc(50% - 12px);
+        padding: 10px;
+        box-sizing: border-box;
+        height: 140px;
+      }
+
+      .card.varVersion {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url(src/assets/version_bg.png);
+        background-size: cover;
+        background-position: center;
+        height: 148px;
+        border-radius: 96px;
+        margin: 0;
+        width: 100%;
+        padding: 0px;
+      }
+
+      .card > p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      aside {
+        max-width: 328px;
+      }
+
+      h1 {
+        font-size: 48px;
+        font-weight: 500;
+        margin: 0;
+      }
+
+      h2 {
+        font-size: 32px;
+        font-weight: 500;
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+        margin-top: 0;
+        font-size: 16px;
+      }
+    </style>
+  </Container>
+</Layout>

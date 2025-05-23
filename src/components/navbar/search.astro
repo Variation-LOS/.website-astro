@@ -1,8 +1,7 @@
-<script type="module">
+<!-- <script type="module">
   const pagefind = await import("/pagefind/pagefind.js");
   pagefind.init();
-</script>
-
+</script> -->
 <a class="search-icon" id="search-icon">Search</a>
 
 <div class="search-box" id="search-box">
@@ -146,6 +145,10 @@
     #search-box.show {
       padding: 36px;
     }
+
+    .search-icon {
+      justify-content: center !important;
+    }
   }
 
   .close-button {
@@ -179,6 +182,9 @@
     flex-direction: row;
     align-items: center;
     gap: 8px;
+
+    min-width: 128px;
+    flex-shrink: 1;
   }
 
   .search-icon::before {
@@ -315,7 +321,7 @@
   }
 </style>
 
-<script type="module">
+<!-- <script type="module">
   const searchIcon = document.getElementById("search-icon");
   const searchBox = document.getElementById("search-box");
   const searchInput = document.querySelector("#search-input");
@@ -365,4 +371,4 @@
 
     resultsEl.innerHTML = html;
   }
-</script>
+</script> -->
