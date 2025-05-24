@@ -1,9 +1,7 @@
 import { defineConfig } from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
-import mkcert from 'vite-plugin-mkcert';
 import remarkToc from 'remark-toc';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import rehypeSlug from 'rehype-slug';
@@ -15,9 +13,9 @@ export default defineConfig({
     site: "https://astroship.web3templates.com",
     output: 'static',
     integrations: [mdx(), sitemap(), icon()],
-    vite: {
-        plugins: [tailwindcss(), mkcert()],
-    },
+    // vite: {
+    //     plugins: [tailwindcss(), mkcert()],
+    // },
     server: {
         host: '0.0.0.0',
         port: 4321,

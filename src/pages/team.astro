@@ -20,7 +20,7 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
 <Layout title="Team">
   <Container>
     <div class="Title">
-      <h1>The #Variation Team</h1>
+      <h1>The #TeamVariation</h1>
       <p>There are a small passionate team.</p>
     </div>
     {
@@ -256,7 +256,7 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
   }
 
   .team-member:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
   }
 
   .team-member-avatar-container {
@@ -271,6 +271,7 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
     object-fit: cover;
     object-position: center;
     aspect-ratio: 1/1;
+    user-select: none;
   }
 
   .team-member-info {
@@ -301,6 +302,7 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
     margin-top: 0;
     justify-content: flex-start;
     margin-left: 64px;
+    user-select: none;
   }
 
   .team-member-links {
@@ -310,6 +312,7 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
     justify-content: flex-end;
     width: 100%;
     align-items: center;
+    user-select: none;
   }
 
   .device-tag {
