@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
 import Layout from "src/layouts/Layout.astro";
 import Container from "src/components/container.astro";
 import Sectionhead from "src/components/sectionhead.astro";
@@ -24,39 +23,93 @@ publishedBlogEntries.sort(function (a, b) {
         We write about building startups and thoughts going on our mind.
       </Fragment>
     </Sectionhead>
-    <main class="mt-16">
-      <ul class="grid gap-16 max-w-4xl mx-auto">
+    <style>
+      main {
+        margin-top: 48px;
+      }
+
+      ul {
+        display: grid;
+        gap: 20px;
+        margin: 0 auto;
+        max-width: 896px;
+        list-style: none;
+      }
+
+      @media (min-width: 768px) {
+        ul {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .blog-card {
+        position: relative;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 24px;
+        border-radius: 14px;
+        border: 1px solid var(--md-sys-color-outline-variant);
+        background-color: var(--md-sys-color-surface);
+      }
+
+      .blog-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .blog-category {
+        color: var(--md-sys-color-primary);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .blog-title {
+        font-size: 22px;
+        line-height: 32px;
+        color: var(--md-sys-color-on-background);
+        margin: 0;
+        font-weight: 600;
+      }
+
+      .blog-meta {
+        display: flex;
+        gap: 12px;
+        margin-top: 8px;
+        flex-wrap: wrap;
+      }
+
+      .blog-meta span,
+      .blog-meta time {
+        color: var(--md-sys-color-on-surface-variant);
+        font-size: 16px;
+      }
+    </style>
+    <main>
+      <ul>
         {
           publishedBlogEntries.map((blogPostEntry, index) => (
             <li>
               <a href={`/blog/${blogPostEntry.slug}`}>
-                <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
-                  <Picture
-                    src={blogPostEntry.data.image.src}
-                    alt={blogPostEntry.data.image.alt}
-                    sizes="(max-width: 800px) 100vw, 800px"
-                    width={800}
-                    height={600}
-                    loading={index <= 2 ? "eager" : "lazy"}
-                    decoding={index <= 2 ? "sync" : "async"}
-                    class="w-full rounded-md object-cover object-center bg-white"
-                  />
+                <div class="blog-card">
                   <div>
-                    <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+                    <span class="blog-category">
                       {blogPostEntry.data.category}
                     </span>
-
-                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
-                      {blogPostEntry.data.title}
-                    </h2>
-
-                    <div class="flex gap-2 mt-3">
-                      <span class="text-gray-400">
-                        {blogPostEntry.data.author}
-                      </span>
-                      <span class="text-gray-400">• </span>
+                    <h2 class="blog-title">{blogPostEntry.data.title}</h2>
+                    <div class="blog-meta">
+                      <span>{blogPostEntry.data.author}</span>
+                      <span>• </span>
                       <time
-                        class="text-gray-400"
                         datetime={blogPostEntry.data.publishDate.toISOString()}>
                         {blogPostEntry.data.publishDate.toDateString()}
                       </time>
