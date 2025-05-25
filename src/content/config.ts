@@ -12,7 +12,8 @@ const blogCollection = defineCollection({
       alt: z.string(),
     }),
     publishDate: z.string().transform(str => new Date(str)),
-    author: z.string().default('Astroship'),
+    author: z.string().default('Variation Team'),
+    category: z.string(),
   }),
 });
 
@@ -40,7 +41,7 @@ const devicesCollection = defineCollection({
     draft: z.boolean(),
     publishDate: z.string().transform(str => new Date(str)),
     brand: z.string(),
-    name: z.string(),
+    name: z.string().default('Variation Official'),
     image: z.string(),
     codename: z.string(),
     maintainer: z.string(),
